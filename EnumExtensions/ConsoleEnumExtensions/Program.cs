@@ -11,11 +11,14 @@ namespace ConsoleEnumExtensions
 
         private static void CarregarMenu()
         {
+            Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("\t --------------- Menu Inicial ---------------");
+            Console.WriteLine("\t --------------------- Menu Inicial ---------------------");
             Console.WriteLine("\t --------------- Testes com EnumExtension ---------------");
             Console.WriteLine("\t Digite 1 para executar AsUpperCamelCaseName");
-            Console.WriteLine("\t Digite 2 para executar AsUpperCamelCaseName");
+            Console.WriteLine("\t Digite 2 para executar GetEnumDescription");
+            Console.WriteLine("\t Digite 3 para executar GetDisplayName");
+            Console.WriteLine("\t Digite 4 para executar GetDisplay");
             Console.Write("\t\t");
             var key = Console.ReadKey();
             switch (key.KeyChar)
@@ -25,6 +28,12 @@ namespace ConsoleEnumExtensions
                     break;
                 case '2':
                     GetEnumDescription();
+                    break;
+                case '3':
+                    GetDisplayName();
+                    break;
+                case '4':
+                    GetDisplayName();
                     break;
                 default:
                     break;
@@ -54,9 +63,33 @@ namespace ConsoleEnumExtensions
         {
             Console.Clear();
             Console.WriteLine("\t\t--------------- GetEnumDescription ---------------");
-            foreach (DayEnum item in Enum.GetValues(typeof(DayEnum)))
+            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
             {
-                Console.WriteLine($"\t\tName:{item} - Display Name:{EnumExtension.GetEnumDescription<DayEnum>(item)}");
+                Console.WriteLine($"\t\tName:{item} - {item.GetEnumDescription()}");
+            }
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void GetDisplayName()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- GetDisplayName ---------------");
+            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                Console.WriteLine($"\t\tName:{item} - {item.GetDisplayName()}");
+            }
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void GetDisplay()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- GetDisplay ---------------");
+            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                Console.WriteLine($"\t\tName:{item} - {item.GetDisplay()}");
             }
             Console.ReadKey();
             RecarregarMenu();

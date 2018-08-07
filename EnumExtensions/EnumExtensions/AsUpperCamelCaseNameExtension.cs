@@ -7,7 +7,7 @@ namespace EnumExtensions
     {
         private static readonly Regex UpperCamelCaseRegex = new Regex(@"(?<!^)((?<!\d)\d|(?(?<=[A-Z])[A-Z](?=[a-z])|[A-Z]))", RegexOptions.Compiled);
 
-        public static string AsUpperCamelCaseName(this Enum e) =>
+        internal static string AsUpperCamelCaseNameExt(this Enum e) =>
             UpperCamelCaseRegex.Replace(e.ToString(), " $1");
     }
 }
