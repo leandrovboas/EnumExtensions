@@ -16,6 +16,6 @@ Caso tenha algum que ainda não conste na listagem abaixo, mande seu pull reques
 
 
 
-## License
+## Licença
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Este projeto usa a licença de uso GNU General Public License v2.0 - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
