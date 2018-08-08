@@ -1,8 +1,10 @@
-﻿using System;
-using System.Net;
+﻿using ConsoleEnumExtensions;
 using EnumExtensions;
+using System;
+using System.Linq;
+using System.Net;
 
-namespace ConsoleEnumExtensions
+namespace ConsoleEnumUtilss
 {
     class Program
     {
@@ -14,11 +16,13 @@ namespace ConsoleEnumExtensions
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine("\t --------------------- Menu Inicial ---------------------");
-            Console.WriteLine("\t --------------- Testes com EnumExtension ---------------");
+            Console.WriteLine("\t --------------- Testes com EnumUtils ---------------");
             Console.WriteLine("\t Digite 1 para executar AsUpperCamelCaseName");
             Console.WriteLine("\t Digite 2 para executar GetEnumDescription");
             Console.WriteLine("\t Digite 3 para executar GetDisplayName");
             Console.WriteLine("\t Digite 4 para executar GetDisplay");
+            Console.WriteLine("\t Digite 5 para executar EnumToList");
+            Console.WriteLine("\t Digite 6 para executar ParseEnum");
             Console.Write("\t\t");
             var key = Console.ReadKey();
             switch (key.KeyChar)
@@ -33,7 +37,13 @@ namespace ConsoleEnumExtensions
                     GetDisplayName();
                     break;
                 case '4':
-                    GetDisplayName();
+                    GetDisplay();
+                    break;
+                case '5':
+                    EnumToList();
+                    break;
+                case '6':
+                    ParseEnum();
                     break;
                 default:
                     break;
@@ -63,7 +73,7 @@ namespace ConsoleEnumExtensions
         {
             Console.Clear();
             Console.WriteLine("\t\t--------------- GetEnumDescription ---------------");
-            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
+            foreach (EnumDayOfWeek item in Enum.GetValues(typeof(EnumDayOfWeek)))
             {
                 Console.WriteLine($"\t\tName:{item} - {item.GetEnumDescription()}");
             }
@@ -75,7 +85,7 @@ namespace ConsoleEnumExtensions
         {
             Console.Clear();
             Console.WriteLine("\t\t--------------- GetDisplayName ---------------");
-            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
+            foreach (EnumDayOfWeek item in Enum.GetValues(typeof(EnumDayOfWeek)))
             {
                 Console.WriteLine($"\t\tName:{item} - {item.GetDisplayName()}");
             }
@@ -87,10 +97,36 @@ namespace ConsoleEnumExtensions
         {
             Console.Clear();
             Console.WriteLine("\t\t--------------- GetDisplay ---------------");
-            foreach (DayOfWeek item in Enum.GetValues(typeof(DayOfWeek)))
+            foreach (EnumDayOfWeek item in Enum.GetValues(typeof(EnumDayOfWeek)))
             {
                 Console.WriteLine($"\t\tName:{item} - {item.GetDisplay()}");
             }
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void EnumToList()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- EnumToList ---------------");
+
+            var weekdays = EnumUtils.EnumToList<EnumDayOfWeek>().ToList();
+            foreach (var item in weekdays)
+            {
+                Console.WriteLine($"\t\tName:{item}");
+            }
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void ParseEnum()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- ParseEnum ---------------");
+            var enumString = EnumUtils.ParseEnum<EnumDayOfWeek>("Wed");
+            var enumInt = EnumUtils.ParseEnum<EnumDayOfWeek>(4);
+            Console.WriteLine($"\t\t Parse Enum String:'Wed' -  {enumString} - type:({enumString.GetType().Name})");
+            Console.WriteLine($"\t\t Parse Enum Int:4 -  {enumInt} - type:({enumInt.GetType().Name})");
             Console.ReadKey();
             RecarregarMenu();
         }

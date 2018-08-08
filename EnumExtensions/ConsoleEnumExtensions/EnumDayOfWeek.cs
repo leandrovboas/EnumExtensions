@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConsoleEnumExtensions
 {
-    enum DayOfWeek
+    enum EnumDayOfWeek
     {
         [Description("Description : Sunday")]
         [DisplayName("DisplayName : Sunday")]
-        [Display(Name ="Display : Sunday")]
+        [Display(Name = "Display : Sunday")]
         Sun = 1,
         [Description("Description : Monday")]
         [DisplayName("DisplayName : Monday")]
