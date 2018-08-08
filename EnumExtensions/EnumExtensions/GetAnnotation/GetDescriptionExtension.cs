@@ -7,9 +7,9 @@ namespace EnumExtensions
 {
     internal static class GetDescriptionExtension
     {
-        internal static string GetEnumDescriptionExt(this Enum value) =>
-            value.GetType()
-                   .GetMember(value.ToString())
+        internal static string GetEnumDescriptionExt(this Enum source) =>
+            source.GetType()
+                   .GetMember(source.ToString())
                    .First()
                    .GetCustomAttribute<DescriptionAttribute>()
                    .Description;

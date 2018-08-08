@@ -84,5 +84,13 @@ namespace EnumExtensions
         /// <returns>Enum type of T</returns>
         public static T ParseEnum<T>(int input, T defaultValue) where T : struct =>
             GenericParseEnum.ParseEnumExt(input, defaultValue);
+
+        /// <summary>
+        /// Convert Enum to Dictionary<int, string>
+        /// </summary>
+        /// <typeparam name="T">Type Enum</typeparam>
+        /// <returns>Return Dictionary<int, string></returns>
+        public static Dictionary<int, string> EnumToDictionary<T>() =>
+            ConvertEnumToDictionary.EnumToDictionaryExt<T>();
     }
 }

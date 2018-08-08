@@ -1,6 +1,7 @@
 ﻿using ConsoleEnumExtensions;
 using EnumExtensions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
@@ -23,6 +24,7 @@ namespace ConsoleEnumUtilss
             Console.WriteLine("\t Digite 4 para executar GetDisplay");
             Console.WriteLine("\t Digite 5 para executar EnumToList");
             Console.WriteLine("\t Digite 6 para executar ParseEnum");
+            Console.WriteLine("\t Digite 7 para executar EnumToDictionary");
             Console.Write("\t\t");
             var key = Console.ReadKey();
             switch (key.KeyChar)
@@ -44,6 +46,9 @@ namespace ConsoleEnumUtilss
                     break;
                 case '6':
                     ParseEnum();
+                    break;
+                case '7':
+                    EnumToDictionary();
                     break;
                 default:
                     break;
@@ -127,6 +132,20 @@ namespace ConsoleEnumUtilss
             var enumInt = EnumUtils.ParseEnum<EnumDayOfWeek>(4);
             Console.WriteLine($"\t\t Parse Enum String:'Wed' -  {enumString} - type:({enumString.GetType().Name})");
             Console.WriteLine($"\t\t Parse Enum Int:4 -  {enumInt} - type:({enumInt.GetType().Name})");
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void EnumToDictionary()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- EnumToDictionary ---------------");
+
+            var dictionary = EnumUtils.EnumToDictionary<EnumDayOfWeek>();
+                foreach (KeyValuePair<int, string> entry in dictionary)
+            {
+                Console.WriteLine($"\t\t Key:{entry.Key} - value:{entry.Value}");
+            }
             Console.ReadKey();
             RecarregarMenu();
         }

@@ -13,6 +13,7 @@ Caso tenha algum que ainda não conste na listagem abaixo, mande seu pull reques
 - GetDisplay – Recupera o valor do annotation GetDisplay ([Display(Name = "")]);
 - EnumToList – converte um Enum em uma lista com os valores contidos no Enum;
 - ParseEnum – Converte uma string ou um int para o tipo Enum especifico;
+- EnumToDictionary - Convert um Enum para um Dictionary<int, string>
 
 
 

@@ -7,9 +7,9 @@ namespace EnumExtensions
 {
     internal static class GetDisplayNameExtension
     {
-        internal static string GetDisplayNameExt(this Enum enumValue) =>
-            enumValue.GetType()
-                   .GetMember(enumValue.ToString())
+        internal static string GetDisplayNameExt(this Enum source) =>
+            source.GetType()
+                   .GetMember(source.ToString())
                    .First()
                    .GetCustomAttribute<DisplayNameAttribute>()
                     .DisplayName;
