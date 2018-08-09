@@ -25,6 +25,7 @@ namespace ConsoleEnumUtilss
             Console.WriteLine("\t Digite 5 para executar EnumToList");
             Console.WriteLine("\t Digite 6 para executar ParseEnum");
             Console.WriteLine("\t Digite 7 para executar EnumToDictionary");
+            Console.WriteLine("\t Digite 8 para executar ConvertToSelectList");
             Console.Write("\t\t");
             var key = Console.ReadKey();
             switch (key.KeyChar)
@@ -49,6 +50,9 @@ namespace ConsoleEnumUtilss
                     break;
                 case '7':
                     EnumToDictionary();
+                    break;
+                case '8':
+                    ConvertToSelectList();
                     break;
                 default:
                     break;
@@ -142,9 +146,25 @@ namespace ConsoleEnumUtilss
             Console.WriteLine("\t\t--------------- EnumToDictionary ---------------");
 
             var dictionary = EnumUtils.EnumToDictionary<EnumDayOfWeek>();
-                foreach (KeyValuePair<int, string> entry in dictionary)
+                foreach (var entry in dictionary)
             {
                 Console.WriteLine($"\t\t Key:{entry.Key} - value:{entry.Value}");
+            }
+            Console.ReadKey();
+            RecarregarMenu();
+        }
+
+        private static void ConvertToSelectList()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t--------------- ToSelectList ---------------");
+
+            const EnumDayOfWeek EnumInstance = EnumDayOfWeek.Fri;
+            var DayOfWeekOptions = EnumInstance.ToSelectList();
+
+            foreach (var item in DayOfWeekOptions)
+            {
+                Console.WriteLine($"\t\t Value:{item.Value} - Text:{item.Text}");
             }
             Console.ReadKey();
             RecarregarMenu();

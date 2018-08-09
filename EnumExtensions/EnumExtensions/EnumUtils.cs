@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 
 namespace EnumExtensions
@@ -8,34 +9,34 @@ namespace EnumExtensions
         /// <summary>
         /// Get value of the DescriptionAttributes
         /// </summary>
-        /// <param name="enumValue">Enum Value</param>
+        /// <param name="source">Enum Value</param>
         /// <returns>Value Description</returns>
-        public static string GetEnumDescription(this Enum enumValue) =>
-            enumValue.GetEnumDescriptionExt();
+        public static string GetEnumDescription(this Enum source) =>
+            source.GetEnumDescriptionExt();
 
         /// <summary>
         /// From an Enum returns a presentable name separated by Camel Case
         /// </summary>
-        /// <param name="enumValue">Enum Value</param>
+        /// <param name="source">Enum Value</param>
         /// <returns>Display Name</returns>
-        public static string AsUpperCamelCaseName(this Enum enumValue) =>
-            enumValue.AsUpperCamelCaseNameExt();
+        public static string AsUpperCamelCaseName(this Enum source) =>
+            source.AsUpperCamelCaseNameExt();
 
         /// <summary>
         /// Get value of the DisplayNameAttribute
         /// </summary>
-        /// <param name="enumValue">Enum Value</param>
+        /// <param name="source">Enum Value</param>
         /// <returns>Display Name</returns>
-        public static string GetDisplayName(this Enum enumValue) =>
-            enumValue.GetDisplayNameExt();
+        public static string GetDisplayName(this Enum source) =>
+            source.GetDisplayNameExt();
 
         /// <summary>
         /// Get value of the DisplayAttribute
         /// </summary>
-        /// <param name="enumValue">Enum Value</param>
+        /// <param name="source">Enum Value</param>
         /// <returns>Display Name</returns>
-        public static string GetDisplay(this Enum enumValue) =>
-            enumValue.GetDisplayExt();
+        public static string GetDisplay(this Enum source) =>
+            source.GetDisplayExt();
 
         /// <summary>
         /// Return a List with values from a Enum
@@ -92,5 +93,13 @@ namespace EnumExtensions
         /// <returns>Return Dictionary<int, string></returns>
         public static Dictionary<int, string> EnumToDictionary<T>() =>
             ConvertEnumToDictionary.EnumToDictionaryExt<T>();
+
+        /// <summary>
+        /// Convert enum to selectList
+        /// </summary>
+        /// <param name="source">Enum</param>
+        /// <returns>SelectList with values enum</returns>
+        public static SelectList ToSelectList(this Enum source) =>
+            source.ToSelectListExt();
     }
 }
